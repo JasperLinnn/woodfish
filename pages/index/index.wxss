@@ -1,0 +1,154 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+}
+
+.counter {
+  position: absolute;
+  top: 40rpx;
+  right: 40rpx;
+  font-size: 28rpx;
+  color: #5d6b89;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+}
+
+.counter::before {
+  content: "功德";
+  font-size: 24rpx;
+  color: #8695b2;
+}
+
+.progress-container {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.woodfish {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 160rpx;
+  height: 160rpx;
+  z-index: 2;
+  transform-origin: center center;
+}
+
+.tap-animation {
+  animation: tap 0.2s ease-out forwards;
+}
+
+.shake {
+  animation: shake 0.5s infinite;
+}
+
+.floating-tips-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.floating-tip {
+  position: absolute;
+  color: #ff6b6b;
+  font-size: 32rpx;
+  font-weight: bold;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  animation: floatingAnimation 1s ease-out;
+}
+
+.redpacket {
+  position: absolute;
+  animation: falling 2s linear infinite;
+  z-index: 50;
+}
+
+.redpacket-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+@keyframes tap {
+  0% { 
+    transform: translate(-50%, -50%) scale(1); 
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(0.9); 
+  }
+  100% { 
+    transform: translate(-50%, -50%) scale(1); 
+  }
+}
+
+@keyframes shake {
+  0%, 100% { 
+    transform: translate(-50%, -50%) rotate(0deg); 
+  }
+  25% { 
+    transform: translate(-50%, -50%) rotate(-5deg); 
+  }
+  75% { 
+    transform: translate(-50%, -50%) rotate(5deg); 
+  }
+}
+
+@keyframes floatingAnimation {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+  }
+}
+
+@keyframes falling {
+  from {
+    transform: translateY(-100rpx);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}

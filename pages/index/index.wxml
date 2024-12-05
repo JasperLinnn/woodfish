@@ -1,0 +1,38 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 敲击次数计数器 -->
+  <view class="counter">: {{totalCount}}</view>
+  
+  <!-- 进度条 -->
+  <view class="progress-container">
+    <circle-progress percent="{{progress}}" />
+  </view>
+  
+  <!-- +1提示效果 -->
+  <view class="floating-tips-container">
+    <block wx:for="{{floatingTips}}" wx:key="id">
+      <view class="floating-tip" style="left: {{item.x}}; top: {{item.y}};">
+        +1
+      </view>
+    </block>
+  </view>
+  
+  <!-- 木鱼图片 -->
+  <image 
+    class="woodfish {{isShaking ? 'shake' : ''}} {{isAnimating ? 'tap-animation' : ''}}"
+    src="../../images/woodfish.png" 
+    bindtap="onTapWoodfish"
+    mode="aspectFit"
+  />
+  
+  <!-- 红包雨容器 -->
+  <view class="redpacket-container" wx:if="{{showRedPackets}}">
+    <block wx:for="{{redPackets}}" wx:key="index">
+      <image 
+        class="redpacket" 
+        src="../../images/redpacket.png"
+        style="left: {{item.left}}px; animation-delay: {{item.delay}}s; width: {{item.size}}rpx; height: {{item.size * 1.2}}rpx;"
+      />
+    </block>
+  </view>
+</view>
